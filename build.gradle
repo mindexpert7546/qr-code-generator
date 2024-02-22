@@ -56,6 +56,10 @@ dependencies {
     console "org.grails:grails-console"
     profile "org.grails.profiles:rest-api"
     runtime "com.h2database:h2"
+    // dependency link : https://mvnrepository.com/artifact/com.google.zxing/core/3.4.1
+    compile 'com.google.zxing:core:3.4.1'
+    compile 'com.google.zxing:javase:3.4.1'
+
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
     testCompile "org.grails:grails-datastore-rest-client"
