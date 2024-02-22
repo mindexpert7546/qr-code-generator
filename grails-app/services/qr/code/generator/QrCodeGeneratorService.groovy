@@ -5,6 +5,7 @@ import com.google.zxing.qrcode.QRCodeWriter
 import com.google.zxing.client.j2se.MatrixToImageWriter
 import com.google.zxing.common.BitMatrix
 import java.io.ByteArrayOutputStream
+import com.google.zxing.client.j2se.MatrixToImageConfig;
 
 class QrCodeGeneratorService {
 
@@ -18,8 +19,15 @@ class QrCodeGeneratorService {
 
         ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream()
         //The ByteArrayOutputStream is the sub class of OutPutStream which is used to store de qr in from of byte 
-        MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream)
+        
+        // Black color for the QR code
+        int onColor = 0xFF000000; // Fully opaque black
+        // Yellow color for the background
+        int offColor = 0xFFFFFF00; // Fully opaque yellow
+        MatrixToImageConfig config = new MatrixToImageConfig( onColor , offColor ) 
+        MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream,config)
         //Here which is a 2D array representation of the QR code where each cell represents a bit/pixel in the QR code. True/1 values in the matrix represent black pixels, and false/0 values represent white pixels.
+       
         
         return pngOutputStream.toByteArray()
     }
