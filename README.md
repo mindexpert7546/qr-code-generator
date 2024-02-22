@@ -57,3 +57,15 @@ Supposed you enter :
 http://localhost:8080/qrgen/mindexpert
 ```
 In above url mindexpert will be converted into the qr.
+
+
+## Some importent step : 
+1. Crete the object of QRCodeWriter (e.g -  QRCodeWriter qrCodeWriter = new QRCodeWriter())
+
+2. Use qrCodeWriter to generate the qr code and store to the BitMatrix in from of 2D array (e.g-  BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height))
+
+3. Crete the object of ByteArrayOutputStream to stor the qr code in form of byte (e.g-  ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream())
+
+4. Now the time to build complete qr code and store to the byte output Stream (e.g - MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream,config))
+
+We have successfuly build the application to generate the qr code in form of the png format 
